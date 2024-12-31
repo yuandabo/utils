@@ -1,20 +1,22 @@
-<script setup lang="ts">
-import VisualList from "./components/VisualList.vue";
-import { ref } from "vue";
-
-const data = ref<any[]>([]);
-for (let i = 0; i < 1000; i++) {
-  data.value.push({ id: i, value: i });
-}
-</script>
-
 <template>
-  <div style="height: 100vh; width: 100vw">
-        
-    <VisualList :listData="data" :itemSize="100" />
-      
+  <div style="height: 100vh; width: 80vw">
+    <VirtualList :listData="data" :itemSize="50" />
   </div>
 </template>
+
+<script setup>
+import VirtualList from "./components/VisualListAutoHeight.vue";
+// import { faker } from "@faker-js/faker";
+import { ref } from "vue";
+
+const data = ref([]);
+for (let i = 0; i < 1000; i++) {
+  data.value.push({
+    index: i,
+    value: 123,
+  });
+}
+</script>
 
 <style>
 html {
